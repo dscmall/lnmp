@@ -182,7 +182,7 @@ Nginx配置文件进行了调整，启用php和pathinfo采用include方式，增
 调整优化安装脚本，自动记录安装日志至/root/lnmp-install.log安装失败时可以提供此文件；
 安装时增加PHP 5.3和MySQL 5.5版本选择，可以自由选择；
 删除安装时需要输入域名的选择，以免对新生造成误导；
-默认站点目录更换到/home/wwwroot/default/ ；
+默认站点目录更换到/ecmoban/www/ ；
 增加proftpd安装脚本 proftpd.sh和proftpd用户创建脚本proftpd_vhost.sh；
 增加xcache安装脚本；
 增加502重启脚本；

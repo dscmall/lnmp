@@ -105,8 +105,8 @@ Install_Nginx()
 
     mkdir /usr/local/nginx/conf/vhost
 
-    if [ "${Default_Website_Dir}" != "/home/wwwroot/default" ]; then
-        sed -i "s#/home/wwwroot/default#${Default_Website_Dir}#g" /usr/local/nginx/conf/nginx.conf
+    if [ "${Default_Website_Dir}" != "/ecmoban/www" ]; then
+        sed -i "s#/ecmoban/www#${Default_Website_Dir}#g" /usr/local/nginx/conf/nginx.conf
     fi
 
     if [ "${Stack}" = "lnmp" ]; then
