@@ -1,4 +1,4 @@
-# LNMP一键安装包 - Readme
+# LNMP一键安装包
 
 ## LNMP一键安装包是什么?
 
@@ -174,6 +174,30 @@ MariaDB 10.2 | 9 | | | | | |
 |Enable_Nginx_Openssl|Nginx是否使用新版openssl|默认 y，建议不修改，y是启用并开启到http2|
 |Enable_PHP_Fileinfo|是否安装开启php的fileinfo模块|默认n，根据自己情况而定，安装启用的话改成 y|
 |Enable_Nginx_Lua|是否为Nginx安装lua支持|默认n，安装lua可以使用一些基于lua的waf网站防火墙|
+
+## 大商创 X 版本环境部署
+
+```
+### !!!!! ---------- 重要 ---------- !!!!! ###
+### 
+### 如有数据盘，请先挂载到 /ecmoban 目录
+### 参考步骤：https://help.aliyun.com/document_detail/25426.html
+### 
+### !!!!! ---------- 重要 ---------- !!!!! ###
+
+cd /usr/local/src
+
+wget https://github.com/dscmall/lnmp/archive/v1.5.1.tar.gz -cO lnmp1.5.tar.gz && tar zxf lnmp1.5.tar.gz && cd lnmp1.5 && LNMP_Auto="y" DBSelect="2" DB_Root_Password="dscmall1@#" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
+
+./addons.sh install redis
+
+wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer
+chmod a+x /usr/local/bin/composer
+composer config -g repo.packagist composer https://packagist.laravel-china.org
+
+
+
+```
 
 ## 技术支持
 
