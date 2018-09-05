@@ -178,12 +178,12 @@ MariaDB 10.2 | 9 | | | | | |
 ## 大商创 X 版本环境部署
 
 ```
-### !!!!! ---------- 重要 ---------- !!!!! ###
-### 
-### 如有数据盘，请先挂载到 /ecmoban 目录
-### 参考步骤：https://help.aliyun.com/document_detail/25426.html
-### 
-### !!!!! ---------- 重要 ---------- !!!!! ###
+# ---------- ---------- ---------- ----------
+#
+# 提示：如有数据盘，请先挂载到 /ecmoban 目录
+# 参考步骤：https://help.aliyun.com/document_detail/25426.html
+# 
+# ---------- ---------- ---------- ----------
 
 cd /usr/local/src
 
@@ -194,6 +194,23 @@ wget https://github.com/dscmall/lnmp/archive/v1.5.1.tar.gz -cO lnmp1.5.tar.gz &&
 wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer
 chmod a+x /usr/local/bin/composer
 composer config -g repo.packagist composer https://packagist.laravel-china.org
+
+mkdir -p ./src/swoole && \
+cd ./src/swoole && \
+rm -rf ./swoole/swoole-src && \
+curl -o ./swoole/tmp/swoole.tar.gz https://github.com/swoole/swoole-src/archive/master.tar.gz -L && \
+tar zxvf ./swoole/tmp/swoole.tar.gz && \
+mv swoole-src* swoole-src && \
+cd swoole-src && \
+phpize && \
+./configure \
+--enable-coroutine \
+--enable-openssl  \
+--enable-http2  \
+--enable-async-redis \
+--enable-sockets \
+--enable-mysqlnd && \
+make clean && make && sudo make install
 
 
 
