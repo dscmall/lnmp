@@ -44,9 +44,9 @@ Install_Apache_22()
     ln -sf /usr/local/lib/libltdl.so.3 /usr/lib/libltdl.so.3
     mkdir /usr/local/apache/conf/vhost
 
-    if [ "${Default_Website_Dir}" != "/home/wwwroot/default" ]; then
-        sed -i "s#/home/wwwroot/default#${Default_Website_Dir}#g" /usr/local/apache/conf/httpd.conf
-        sed -i "s#/home/wwwroot/default#${Default_Website_Dir}#g" /usr/local/apache/conf/extra/httpd-vhosts.conf
+    if [ "${Default_Website_Dir}" != "/ecmoban/www" ]; then
+        sed -i "s#/ecmoban/www#${Default_Website_Dir}#g" /usr/local/apache/conf/httpd.conf
+        sed -i "s#/ecmoban/www#${Default_Website_Dir}#g" /usr/local/apache/conf/extra/httpd-vhosts.conf
     fi
 
     if [[ "${PHPSelect}" =~ ^[678]$ ]]; then
@@ -114,9 +114,9 @@ Install_Apache_24()
     mkdir /usr/local/apache/conf/vhost
 
     sed -i 's/NameVirtualHost .*//g' /usr/local/apache/conf/extra/httpd-vhosts.conf
-    if [ "${Default_Website_Dir}" != "/home/wwwroot/default" ]; then
-        sed -i "s#/home/wwwroot/default#${Default_Website_Dir}#g" /usr/local/apache/conf/httpd.conf
-        sed -i "s#/home/wwwroot/default#${Default_Website_Dir}#g" /usr/local/apache/conf/extra/httpd-vhosts.conf
+    if [ "${Default_Website_Dir}" != "/ecmoban/www" ]; then
+        sed -i "s#/ecmoban/www#${Default_Website_Dir}#g" /usr/local/apache/conf/httpd.conf
+        sed -i "s#/ecmoban/www#${Default_Website_Dir}#g" /usr/local/apache/conf/extra/httpd-vhosts.conf
     fi
 
     if [[ "${PHPSelect}" =~ ^[678]$ ]]; then

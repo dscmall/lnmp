@@ -73,7 +73,7 @@ Uninstall_LNMP()
             mv ${MariaDB_Data_Dir} /root/databases_backup_$(date +"%Y%m%d%H%M%S")
         fi
     fi
-    chattr -i ${Default_Website_Dir}/.user.ini
+    # chattr -i ${Default_Website_Dir}/.user.ini
     echo "Deleting LNMP files..."
     rm -rf /usr/local/nginx
     rm -rf /usr/local/php
