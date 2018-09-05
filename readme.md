@@ -36,4 +36,4 @@ cd ./loader && ./swoole-compiler-loader.sh
 
 4、修改 mysql 的 root 用户密码
 
-访问：http://ip/phpmyadmin，使用 root 用户登录后，请立即修改初始密码（`dscmall1@#`）。
+访问：[http://ip/phpmyadmin](http://ip/phpmyadmin)，使用 root 用户登录后，请立即修改初始密码（`dscmall1@#`）。
