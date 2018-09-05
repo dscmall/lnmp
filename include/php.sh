@@ -641,6 +641,18 @@ Install_PHP_71()
     echo "Install ZendGuardLoader for PHP 7.1..."
     echo "unavailable now."
 
+    echo "Install SwooleLoader for PHP 7.1..."
+    cd ${cur_dir}/src
+    Download_Files http://compiler.swoole.com/static/loader1.9.0/swoole_loader71_zts.so
+    mkdir -p /usr/local/swoole/
+    \cp swoole_loader71_zts.so /usr/local/swoole/
+
+    echo "Write SwooleLoader to php.ini..."
+    cat >>/usr/local/php/etc/php.ini<<EOF
+[Swoole Loader]
+extension=/usr/local/swoole/swoole_loader71_zts.so
+EOF
+
 if [ "${Stack}" = "lnmp" ]; then
     echo "Creating new php-fpm configure file..."
     cat >/usr/local/php/etc/php-fpm.conf<<EOF
