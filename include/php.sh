@@ -95,6 +95,7 @@ Install_Composer()
             chmod +x /usr/local/bin/composer
         fi
     fi
+    composer config -g repo.packagist composer https://packagist.laravel-china.org
 }
 
 Check_Curl()
@@ -637,21 +638,6 @@ Install_PHP_71()
     sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
-
-    echo "Install ZendGuardLoader for PHP 7.1..."
-    echo "unavailable now."
-
-    echo "Install SwooleLoader for PHP 7.1..."
-    cd ${cur_dir}/src
-    Download_Files http://compiler.swoole.com/static/loader1.9.0/swoole_loader71_zts.so
-    mkdir -p /usr/local/swoole/
-    \cp swoole_loader71_zts.so /usr/local/swoole/
-
-    echo "Write SwooleLoader to php.ini..."
-    cat >>/usr/local/php/etc/php.ini<<EOF
-[Swoole Loader]
-extension=/usr/local/swoole/swoole_loader71_zts.so
-EOF
 
 if [ "${Stack}" = "lnmp" ]; then
     echo "Creating new php-fpm configure file..."
