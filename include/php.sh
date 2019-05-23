@@ -866,33 +866,16 @@ LNMP_PHP_Opt()
 
 Creat_PHP_Tools()
 {
-    echo "Create PHP Info Tool..."
-    cat >${Default_Website_Dir}/phpinfo.php<<eof
-<?php
-phpinfo();
-?>
-eof
-
-    echo "Copy PHP Prober..."
-    cd ${cur_dir}/src
-    tar zxf p.tar.gz
-    \cp p.php ${Default_Website_Dir}/p.php
-
     \cp ${cur_dir}/conf/index.html ${Default_Website_Dir}/index.html
-    \cp ${cur_dir}/conf/lnmp.gif ${Default_Website_Dir}/lnmp.gif
 
-    if [ ${PHPSelect} -ge 4 ]; then
-        echo "Copy Opcache Control Panel..."
-        \cp ${cur_dir}/conf/ocp.php ${Default_Website_Dir}/ocp.php
-    fi
     echo "============================Install PHPMyAdmin================================="
-    [[ -d ${Default_Website_Dir}/phpmyadmin ]] && rm -rf ${Default_Website_Dir}/phpmyadmin
+    [[ -d ${Default_Website_Dir}/pma ]] && rm -rf ${Default_Website_Dir}/pma
     tar Jxf ${PhpMyAdmin_Ver}.tar.xz
-    mv ${PhpMyAdmin_Ver} ${Default_Website_Dir}/phpmyadmin
-    \cp ${cur_dir}/conf/config.inc.php ${Default_Website_Dir}/phpmyadmin/config.inc.php
-    sed -i 's/LNMPORG/LNMP.org_0'$RANDOM`date '+%s'`$RANDOM'9_VPSer.net/g' ${Default_Website_Dir}/phpmyadmin/config.inc.php
-    mkdir ${Default_Website_Dir}/phpmyadmin/{upload,save}
-    chmod 755 -R ${Default_Website_Dir}/phpmyadmin/
-    chown www:www -R ${Default_Website_Dir}/phpmyadmin/
+    mv ${PhpMyAdmin_Ver} ${Default_Website_Dir}/pma
+    \cp ${cur_dir}/conf/config.inc.php ${Default_Website_Dir}/pma/config.inc.php
+    sed -i 's/LNMPORG/LNMP.org_0'$RANDOM`date '+%s'`$RANDOM'9_VPSer.net/g' ${Default_Website_Dir}/pma/config.inc.php
+    mkdir ${Default_Website_Dir}/pma/{upload,save}
+    chmod 755 -R ${Default_Website_Dir}/pma/
+    chown www:www -R ${Default_Website_Dir}/pma/
     echo "============================phpMyAdmin install completed======================="
 }
