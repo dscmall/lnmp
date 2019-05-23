@@ -356,6 +356,7 @@ if [ -n "$loader_installed" ]; then
 	loader_version_installed=$($php_path -i 2> /dev/null | awk '/^swoole_loader version =>/ {print $4}')
 	echo ""
 	echo -e " ${YELLOW}Swoole Compiler Loader $loader_version_installed is installed successfully${NC}"
+	/etc/init.d/php-fpm restart
 	exit 1;
 else
 	echo ""
