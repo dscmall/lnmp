@@ -1,5 +1,34 @@
 更新记录
 
+LNMP 1.6
+
+增加PHP 7.3支持；
+增加MariaDB 10.3支持；
+增加Nginx/Apache TLS 1.3支持；
+增加使用DNS API方式只创建SSL证书不添加网站，命令lnmp onlyssl；
+增加Fedora 30、Ubuntu 19.04、RHEL 8等新版本的支持；
+增加nginx、apache等一些例子，并移至conf/example目录下；
+增加在低于2048MB内存是增加2GB SWAP或低于1024MB时增加1GB SWAP的选项；
+增加反向代理配置例子文件 nginx-reverse-proxy-example.conf；
+增加只安装nginx模式增加拷贝lnmp管理工具；
+增加 RHELRepo=local 参数，RHEL安装时使用RHEL本地源，不设置源为163 centos源；
+增加 CheckMirror=n 参考，安装时不检查下载镜像，方便无网络安装；
+优化不安装数据库时的处理流程；
+优化acme.sh规则可能不生效的情况；
+优化nginx系统满足条件是启用reuseport；
+优化程序代码目录清理；
+优化重写nginx管理脚本；
+优化安装数据库时的内存判断，放宽内存限制；
+修复新版深度Deepin 15.8桌面版问题；
+修复新版Fedora 29下问题；
+调整mysql使用带boost源码，同时支持不带boost安装方式；
+调整卸载时不删除安装时添加的iptables规则；
+调整fileinfo安装选项，内存满足时自动安装(可关闭)；
+升级Nginx至1.16.0；
+升级各程序版本；
+更新诸多软件版本；
+其他一些功能优化及调整......
+
 LNMP 1.5
 
 增加PHP 7.2支持；
@@ -135,7 +164,7 @@ MySQL安装时可选5.1.73、5.5.42、5.6.23，MariaDB可选5.5.42、10.0.17；
 PHP安装时可选5.2.17、5.3.29、5.4.41、5.5.25、5.6.9；
 安装时增加内存优化jemalloc或gperftools；
 Apache安装时可选2.2.29或2.4.12；
-Apache日志统一到/home/wwwlogs/下；
+Apache日志统一到/ecmoban/wwwlogs/下；
 更新Nginx至1.8.0；
 更新Zend Guard Loader至支持PHP 5.6；
 Nginx配置文件进行了调整，启用php和pathinfo采用include方式，增加ssl范例配置；
@@ -182,7 +211,7 @@ Nginx配置文件进行了调整，启用php和pathinfo采用include方式，增
 调整优化安装脚本，自动记录安装日志至/root/lnmp-install.log安装失败时可以提供此文件；
 安装时增加PHP 5.3和MySQL 5.5版本选择，可以自由选择；
 删除安装时需要输入域名的选择，以免对新生造成误导；
-默认站点目录更换到/ecmoban/www/ ；
+默认站点目录更换到/ecmoban/wwwroot/default ；
 增加proftpd安装脚本 proftpd.sh和proftpd用户创建脚本proftpd_vhost.sh；
 增加xcache安装脚本；
 增加502重启脚本；
@@ -244,7 +273,7 @@ Nginx升级至0.8.54、MySQL升级至5.1.54、PHP升级至5.2.17；
 
 2010年10月9日发布LNMP 0.5
 升级Nginx到0.7.67、MySQL到5.1.48、PHP升级到5.2.14、PHPMyAdmin升级到3.3.7
-为安全将Nginx日志移动到/home/wwwlogs/下面；
+为安全将Nginx日志移动到/ecmoban/wwwlogs/下面；
 更改32位64位判别方式；
 增加系统时间调整，防止时间错误造成编译出错；
 优化eAccelerator安装程序；

@@ -23,15 +23,15 @@ website_root=''
 while :;do
     read -p "Enter website root directory: " website_root
     if [ -d "${website_root}" ]; then
-        if [ -f ${website_root}/.user.ini ];then
-            chattr -i ${website_root}/.user.ini
-            rm -f ${website_root}.user.ini
+        if [ -f ${website_root}/public/.user.ini ];then
+            chattr -i ${website_root}/public/.user.ini
+            rm -f ${website_root}/public/.user.ini
             sed -i 's/^fastcgi_param PHP_ADMIN_VALUE/#fastcgi_param PHP_ADMIN_VALUE/g' /usr/local/nginx/conf/fastcgi.conf
             /etc/init.d/php-fpm restart
             /etc/init.d/nginx reload
             echo "done."
         else
-            echo "${website_root}/.user.ini is not exist!"
+            echo "${website_root}/public/.user.ini is not exist!"
         fi
         break
     else

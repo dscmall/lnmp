@@ -16,7 +16,7 @@ else
     Stack=$1
 fi
 
-LNMP_Ver='1.5'
+LNMP_Ver='1.6'
 . lnmp.conf
 . include/main.sh
 . include/init.sh
@@ -62,13 +62,16 @@ Init_Install()
     Get_Dist_Version
     Print_Sys_Info
     Check_Hosts
-    Check_Mirror
+    if [ "${CheckMirror}" = "n" ]; then
+        Check_Mirror
+    fi
     if [ "${DISTRO}" = "RHEL" ]; then
         RHEL_Modify_Source
     fi
     if [ "${DISTRO}" = "Ubuntu" ]; then
         Ubuntu_Modify_Source
     fi
+    Add_Swap
     Set_Timezone
     if [ "$PM" = "yum" ]; then
         CentOS_InstallNTP
@@ -118,8 +121,11 @@ Init_Install()
         Install_MariaDB_101
     elif [ "${DBSelect}" = "9" ]; then
         Install_MariaDB_102
+    elif [ "${DBSelect}" = "10" ]; then
+        Install_MariaDB_103
     fi
     TempMycnf_Clean
+    Clean_DB_Src_Dir
     Check_PHP_Option
 }
 
@@ -141,7 +147,10 @@ Install_PHP()
         Install_PHP_71
     elif [ "${PHPSelect}" = "8" ]; then
         Install_PHP_72
+    elif [ "${PHPSelect}" = "9" ]; then
+        Install_PHP_73
     fi
+    Clean_PHP_Src_Dir
 }
 
 LNMP_Stack()

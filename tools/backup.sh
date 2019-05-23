@@ -6,10 +6,10 @@
 
 #IMPORTANT!!!Please Setting the following Values!
 
-Backup_Home="/home/backup/"
+Backup_Home="/ecmoban/backup/"
 MySQL_Dump="/usr/local/mysql/bin/mysqldump"
 ######~Set Directory you want to backup~######
-Backup_Dir=("/home/wwwroot/vpser.net" "/home/wwwroot/lnmp.org")
+Backup_Dir=("/ecmoban/wwwroot/vpser.net" "/ecmoban/wwwroot/lnmp.org")
 
 ######~Set MySQL Database you want to backup~######
 Backup_Database=("lnmp" "vpser")

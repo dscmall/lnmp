@@ -11,7 +11,7 @@ fi
 cur_dir=$(pwd)
 Stack=$1
 
-LNMP_Ver='1.4'
+LNMP_Ver='1.6'
 
 . lnmp.conf
 . include/main.sh
@@ -29,17 +29,6 @@ echo "|        A tool to auto-compile & install Nginx+MySQL+PHP on Linux       |
 echo "+------------------------------------------------------------------------+"
 echo "|           For more information please visit https://lnmp.org           |"
 echo "+------------------------------------------------------------------------+"
-
-Dele_Iptables_Rules()
-{
-    /sbin/iptables -D INPUT -i lo -j ACCEPT
-    /sbin/iptables -D INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-    /sbin/iptables -D INPUT -p tcp --dport 22 -j ACCEPT
-    /sbin/iptables -D INPUT -p tcp --dport 80 -j ACCEPT
-    /sbin/iptables -D INPUT -p tcp --dport 443 -j ACCEPT
-    /sbin/iptables -D INPUT -p tcp --dport 3306 -j DROP
-    /sbin/iptables -D INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
-}
 
 Sleep_Sec()
 {
@@ -59,9 +48,6 @@ Uninstall_LNMP()
     lnmp kill
     lnmp stop
 
-    echo "Deleting iptables rules..."
-    Dele_Iptables_Rules
-
     Remove_StartUp nginx
     Remove_StartUp php-fpm
     if [ ${DB_Name} != "None" ]; then
@@ -73,7 +59,7 @@ Uninstall_LNMP()
             mv ${MariaDB_Data_Dir} /root/databases_backup_$(date +"%Y%m%d%H%M%S")
         fi
     fi
-    # chattr -i ${Default_Website_Dir}/.user.ini
+    chattr -i ${Default_Website_Dir}/public/.user.ini
     echo "Deleting LNMP files..."
     rm -rf /usr/local/nginx
     rm -rf /usr/local/php
@@ -113,9 +99,6 @@ Uninstall_LNMPA()
     echo "Stoping LNMPA..."
     lnmp kill
     lnmp stop
-
-    echo "Deleting iptables rules..."
-    Dele_Iptables_Rules
     
     Remove_StartUp nginx
     Remove_StartUp httpd
@@ -156,9 +139,6 @@ Uninstall_LAMP()
     echo "Stoping LAMP..."
     lnmp kill
     lnmp stop
-
-    echo "Deleting iptables rules..."
-    Dele_Iptables_Rules
 
     Remove_StartUp httpd
     if [ ${DB_Name} != "None" ]; then
