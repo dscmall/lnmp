@@ -1,18 +1,18 @@
 #!/bin/bash
 
 DB_Info=('MySQL 5.1.73' 'MySQL 5.5.62' 'MySQL 5.6.44' 'MySQL 5.7.26' 'MySQL 8.0.13' 'MariaDB 5.5.63' 'MariaDB 10.0.38' 'MariaDB 10.1.40' 'MariaDB 10.2.24' 'MariaDB 10.3.15')
-PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.29' 'PHP 7.2.18' 'PHP 7.3.5')
+PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.30' 'PHP 7.2.19' 'PHP 7.3.6')
 Apache_Info=('Apache 2.2.34' 'Apache 2.4.39')
 
 Database_Selection()
 {
 #which MySQL Version do you want to install?
     if [ -z ${DBSelect} ]; then
-        DBSelect="2"
+        DBSelect="3"
         Echo_Yellow "You have 11 options for your DataBase install."
         echo "1: Install ${DB_Info[0]}"
-        echo "2: Install ${DB_Info[1]} (Default)"
-        echo "3: Install ${DB_Info[2]}"
+        echo "2: Install ${DB_Info[1]}"
+        echo "3: Install ${DB_Info[2]} (Default)"
         echo "4: Install ${DB_Info[3]}"
         echo "5: Install ${DB_Info[4]}"
         echo "6: Install ${DB_Info[5]}"
@@ -123,15 +123,15 @@ PHP_Selection()
     if [ -z ${PHPSelect} ]; then
         echo "==========================="
 
-        PHPSelect="3"
+        PHPSelect="7"
         Echo_Yellow "You have 9 options for your PHP install."
         echo "1: Install ${PHP_Info[0]}"
         echo "2: Install ${PHP_Info[1]}"
         echo "3: Install ${PHP_Info[2]}"
         echo "4: Install ${PHP_Info[3]}"
-        echo "5: Install ${PHP_Info[4]} (Default)"
+        echo "5: Install ${PHP_Info[4]}"
         echo "6: Install ${PHP_Info[5]}"
-        echo "7: Install ${PHP_Info[6]}"
+        echo "7: Install ${PHP_Info[6]} (Default)"
         echo "8: Install ${PHP_Info[7]}"
         echo "9: Install ${PHP_Info[8]}"
         read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8 or 9): " PHPSelect

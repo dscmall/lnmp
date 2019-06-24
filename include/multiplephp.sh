@@ -152,7 +152,7 @@ Install_MPHP5.2()
     sed -i 's/; cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' ${MPHP_Path}/etc/php.ini
     sed -i 's/; cgi.fix_pathinfo=0/cgi.fix_pathinfo=0/g' ${MPHP_Path}/etc/php.ini
     sed -i 's/max_execution_time = 30/max_execution_time = 300/g' ${MPHP_Path}/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru,fsocket/g' ${MPHP_Path}/etc/php.ini
 
     cd ${cur_dir}/src
     if [ "${Is_64bit}" = "y" ] ; then

@@ -33,12 +33,12 @@ Start_Upgrade_PHP()
         echo "Notice: php-$php_version.tar.bz2 not found!!!download now..."
         country=`curl -sSk --connect-timeout 10 -m 60 https://ip.vpser.net/country`
         if [ "${country}" = "CN" ]; then
-            wget -c --progress=bar:force http://jp2.php.net/distributions/php-${php_version}.tar.bz2
+            wget -c --progress=bar:force http://php.vpser.net/php-${php_version}.tar.bz2
             if [ $? -ne 0 ]; then
-                wget -c --progress=bar:force http://php.net/distributions/php-${php_version}.tar.bz2
+                wget -c --progress=bar:force https://www.php.net/distributions/php-${php_version}.tar.bz2
             fi
         else
-            wget -c --progress=bar:force http://php.net/distributions/php-${php_version}.tar.bz2
+            wget -c --progress=bar:force https://www.php.net/distributions/php-${php_version}.tar.bz2
         fi
         if [ $? -eq 0 ]; then
             echo "Download php-${php_version}.tar.bz2 successfully!"
@@ -176,7 +176,7 @@ Upgrade_PHP_52()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/; cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru,fsocket/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru,fsocket/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
 
     cd ${cur_dir}/src
@@ -239,7 +239,7 @@ Upgrade_PHP_53()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -339,7 +339,7 @@ Upgrade_PHP_54()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -439,7 +439,7 @@ Upgrade_PHP_556()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -558,7 +558,7 @@ Upgrade_PHP_7()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -633,7 +633,7 @@ Upgrade_PHP_72()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -708,7 +708,7 @@ Upgrade_PHP_73()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 

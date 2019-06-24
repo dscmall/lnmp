@@ -143,7 +143,7 @@ Install_PHP_52()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/; cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru,fsocket/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru,fsocket/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
 
     cd ${cur_dir}/src
@@ -206,7 +206,7 @@ Install_PHP_53()
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
     sed -i 's/register_long_arrays =.*/;register_long_arrays = On/g' /usr/local/php/etc/php.ini
     sed -i 's/magic_quotes_gpc =.*/;magic_quotes_gpc = On/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -302,7 +302,7 @@ Install_PHP_54()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -398,7 +398,7 @@ Install_PHP_55()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -494,7 +494,7 @@ Install_PHP_56()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -590,7 +590,7 @@ Install_PHP_7()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -659,7 +659,7 @@ Install_PHP_71()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -728,7 +728,7 @@ Install_PHP_72()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 
@@ -797,7 +797,7 @@ Install_PHP_73()
     sed -i 's/short_open_tag =.*/short_open_tag = On/g' /usr/local/php/etc/php.ini
     sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
     sed -i 's/max_execution_time =.*/max_execution_time = 300/g' /usr/local/php/etc/php.ini
-    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' ${MPHP_Path}/etc/php.ini
+    sed -i 's/disable_functions =.*/disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,popepassthru/g' /usr/local/php/etc/php.ini
     Pear_Pecl_Set
     Install_Composer
 

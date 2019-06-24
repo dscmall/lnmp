@@ -491,11 +491,11 @@ Add_VHost()
 
     Add_VHost_Config
 
-    cat >${vhostdir}/public/.user.ini<<EOF
-open_basedir=${vhostdir}/../:/tmp/:/proc/
+    cat >${vhostdir}/.user.ini<<EOF
+open_basedir=${vhostdir}:/tmp/:/proc/
 EOF
-    chmod 644 ${vhostdir}/public/.user.ini
-    chattr +i ${vhostdir}/public/.user.ini
+    chmod 644 ${vhostdir}/.user.ini
+    chattr +i ${vhostdir}/.user.ini
 
     /etc/init.d/php-fpm reload
 
@@ -573,9 +573,9 @@ Del_VHost()
         echo "=========================================="
         exit 1
     else
-        if [ -f "${vhostdir}/public/.user.ini" ]; then
-            chattr -i "${vhostdir}/public/.user.ini"
-            rm -f "${vhostdir}/public/.user.ini"
+        if [ -f "${vhostdir}/.user.ini" ]; then
+            chattr -i "${vhostdir}/.user.ini"
+            rm -f "${vhostdir}/.user.ini"
         fi
         rm -f /usr/local/nginx/conf/vhost/${domain}.conf
         echo "========================================================"

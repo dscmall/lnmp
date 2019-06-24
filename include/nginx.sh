@@ -122,11 +122,11 @@ Install_Nginx()
     fi
 
     if [ "${Stack}" = "lnmp" ]; then
-        cat >${Default_Website_Dir}/public/.user.ini<<EOF
-open_basedir=${Default_Website_Dir}/../:/tmp/:/proc/
+        cat >${Default_Website_Dir}/.user.ini<<EOF
+open_basedir=${Default_Website_Dir}:/tmp/:/proc/
 EOF
-        chmod 644 ${Default_Website_Dir}/public/.user.ini
-        chattr +i ${Default_Website_Dir}/public/.user.ini
+        chmod 644 ${Default_Website_Dir}/.user.ini
+        chattr +i ${Default_Website_Dir}/.user.ini
         cat >>/usr/local/nginx/conf/fastcgi.conf<<EOF
 fastcgi_param PHP_ADMIN_VALUE "open_basedir=\$document_root/../:/tmp/:/proc/";
 EOF
