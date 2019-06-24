@@ -10,10 +10,15 @@
 
 #### 安装教程
 
-安装前确认已经安装 wget 和 git 命令，如提示wget: command not found ，使用 `yum install -y wget` 或 `apt-get install wget` 命令安装wget,
-使用 `yum install -y git` 命令安装 git。 为防止掉线等情况，建议使用screen，可以先执行：screen -S lnmp 命令后，再执行LNMP安装命令。
+安装前确认已经安装基本工具（wget、git、screen）
 
-如断线可使用`screen -r lnmp` 恢复。
+- 使用 `yum install -y git` 命令安装 git。 
+- 使用 `yum install -y screen` 命令安装 screen。 
+- 使用 `yum install -y wget` 命令安装 wget。 
+
+为防止掉线等情况，建议使用screen，可以先执行： `screen -S lnmp` 命令后，再执行LNMP安装命令。
+
+安装过程如断线可使用`screen -r lnmp` 恢复。
 
 **重要提示**
 
@@ -22,13 +27,14 @@
 1、一键安装 LNMP 环境
 
 ```
-cd /usr/local/src && git clone https://gitee.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/ && LNMP_Auto="y" DBSelect="2" DB_Root_Password="dscmall!@#456aA" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
+screen -S lnmp
+cd /usr/local/src && git clone https://gitee.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/ && LNMP_Auto="y" DBSelect="3" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
 ```
 
 ```
 提示如下 说明安装完毕 
 
-Install lnmp V1.5 completed! enjoy it.
+Install lnmp V1.6 completed! enjoy it.
 ```
 
 2、安装 swoole loader 扩展
@@ -44,15 +50,8 @@ cd ./loader && ./install.sh && /etc/init.d/nginx reload
 2 : /usr/bin/php-fpm
 
 选择 1 然后回车即可 
-
-```
-- 最后重启下php服务 命令如下
-
-```
-/etc/init.d/php-fpm restart
-
 ```
 
 3、修改 mysql 的 root 用户密码
 
-访问：[http://ip/phpmyadmin](http://ip/phpmyadmin)，使用 root 用户登录后，请立即修改初始密码（`dscmall!@#456aA`）。
+访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`root123aA`）。
