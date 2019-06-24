@@ -60,3 +60,5 @@ cd ./loader && ./install.sh && /etc/init.d/nginx reload
 4、修改 mysql 的 root 用户密码
 
 访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`root123aA`）。
+
+5、LNMP添加、删除虚拟主机及伪静态[使用教程](https://lnmp.org/faq/lnmp-vhost-add-howto.html)
