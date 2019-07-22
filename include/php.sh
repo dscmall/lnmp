@@ -103,6 +103,7 @@ Install_Composer()
             chmod +x /usr/local/bin/composer
         fi
     fi
+	composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 }
 
 Install_PHP_52()
