@@ -134,7 +134,7 @@ Add_VHost_Config()
     cat >"/usr/local/apache/conf/vhost/${domain}.conf"<<EOF
 <VirtualHost *:80>
 ServerAdmin ${email}
-php_admin_value open_basedir "${vhostdir}/../:/tmp/:/var/tmp/:/proc/"
+php_admin_value open_basedir "${vhostdir}:/tmp/:/var/tmp/:/proc/"
 DocumentRoot "${vhostdir}"
 ServerName ${domain}
 ErrorLog "/ecmoban/wwwlogs/${al_name}-error_log"
@@ -350,8 +350,10 @@ Check_DB()
 {
     if [[ -s /usr/local/mariadb/bin/mysql && -s /usr/local/mariadb/bin/mysqld_safe && -s /etc/my.cnf ]]; then
         MySQL_Bin="/usr/local/mariadb/bin/mysql"
+        MySQL_Ver=`/usr/local/mariadb/bin/mysql_config --version`
     elif [[ -s /usr/local/mysql/bin/mysql && -s /usr/local/mysql/bin/mysqld_safe && -s /etc/my.cnf ]]; then
         MySQL_Bin="/usr/local/mysql/bin/mysql"
+        MySQL_Ver=`/usr/local/mysql/bin/mysql_config --version`
     else
         MySQL_Bin="None"
     fi
@@ -828,7 +830,7 @@ Create_SSL_Config()
 
 <VirtualHost *:443>
 ServerAdmin ${email}
-php_admin_value open_basedir "${vhostdir}/../:/tmp/:/var/tmp/:/proc/"
+php_admin_value open_basedir "${vhostdir}:/tmp/:/var/tmp/:/proc/"
 DocumentRoot ${vhostdir}
 ServerName ${domain}:443
 ErrorLog "/ecmoban/wwwlogs/${al_name}-error_log"
