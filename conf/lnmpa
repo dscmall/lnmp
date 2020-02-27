@@ -145,14 +145,7 @@ server
         index index.html index.htm index.php default.html default.htm default.php;
         root  ${vhostdir};
 
-        add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-XSS-Protection "1; mode=block";
-        add_header X-Content-Type-Options "nosniff";
-
         #error_page   404   /404.html;
-
-        location = /favicon.ico { access_log off; log_not_found off; }
-        location = /robots.txt  { access_log off; log_not_found off; }
 
         # Deny access to PHP files in specific directory
         #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ { deny all; }
@@ -831,6 +824,8 @@ Install_Check_Acme.sh()
         rm -rf acme.sh-*
         sed -i 's/cat "\$CERT_PATH"$/#cat "\$CERT_PATH"/g' /usr/local/acme.sh/acme.sh
         if command -v yum >/dev/null 2>&1; then
+            yum -y update nss
+            yum -y install ca-certificates
             service crond restart
             chkconfig crond on
         elif command -v apt-get >/dev/null 2>&1; then
@@ -888,10 +883,6 @@ server
         index index.html index.htm index.php default.html default.htm default.php;
         root  ${vhostdir};
 
-        add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-XSS-Protection "1; mode=block";
-        add_header X-Content-Type-Options "nosniff";
-
         ssl_certificate ${ssl_certificate};
         ssl_certificate_key ${ssl_certificate_key};
         ssl_session_timeout 5m;
@@ -903,9 +894,6 @@ server
         ssl_dhparam /usr/local/nginx/conf/ssl/dhparam.pem;
 
         #error_page   404   /404.html;
-
-        location = /favicon.ico { access_log off; log_not_found off; }
-        location = /robots.txt  { access_log off; log_not_found off; }
 
         # Deny access to PHP files in specific directory
         #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ { deny all; }

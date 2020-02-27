@@ -385,6 +385,7 @@ EOF
     /usr/local/mysql/scripts/mysql_install_db --defaults-file=/etc/my.cnf --basedir=/usr/local/mysql --datadir=${MySQL_Data_Dir} --user=mysql
     chgrp -R mysql /usr/local/mysql/.
     \cp support-files/mysql.server /etc/init.d/mysql
+    \cp ${cur_dir}/init.d/mysql.service /etc/systemd/system/mysql.service
     chmod 755 /etc/init.d/mysql
 
     cat > /etc/ld.so.conf.d/mysql.conf<<EOF
@@ -515,6 +516,7 @@ EOF
     /usr/local/mysql/scripts/mysql_install_db --defaults-file=/etc/my.cnf --basedir=/usr/local/mysql --datadir=${MySQL_Data_Dir} --user=mysql
     chgrp -R mysql /usr/local/mysql/.
     \cp support-files/mysql.server /etc/init.d/mysql
+    \cp ${cur_dir}/init.d/mysql.service /etc/systemd/system/mysql.service
     chmod 755 /etc/init.d/mysql
 
     cat > /etc/ld.so.conf.d/mysql.conf<<EOF
@@ -612,6 +614,7 @@ EOF
     /usr/local/mysql/bin/mysqld --initialize-insecure --basedir=/usr/local/mysql --datadir=${MySQL_Data_Dir} --user=mysql
     chgrp -R mysql /usr/local/mysql/.
     \cp support-files/mysql.server /etc/init.d/mysql
+    \cp ${cur_dir}/init.d/mysql.service /etc/systemd/system/mysql.service
     chmod 755 /etc/init.d/mysql
 
     cat > /etc/ld.so.conf.d/mysql.conf<<EOF
@@ -710,6 +713,7 @@ EOF
     /usr/local/mysql/bin/mysqld --initialize-insecure --basedir=/usr/local/mysql --datadir=${MySQL_Data_Dir} --user=mysql
     chgrp -R mysql /usr/local/mysql/.
     \cp support-files/mysql.server /etc/init.d/mysql
+    \cp ${cur_dir}/init.d/mysql.service /etc/systemd/system/mysql.service
     chmod 755 /etc/init.d/mysql
 
     cat > /etc/ld.so.conf.d/mysql.conf<<EOF
