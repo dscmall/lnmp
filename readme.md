@@ -44,7 +44,13 @@ cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp &&
 Install lnmp completed! enjoy it.
 ```
 
-3、安装 swoole loader 扩展
+3、安装 swoole 扩展
+
+```
+./addons.sh swoole
+```
+
+4、安装 swoole loader 扩展
 
 - 执行安装脚本，确保当前位置是在 /usr/local/src/lnmp/ 下，然后执行如下命令 可以用 `pwd` 查看 当前所在目录
 
@@ -59,8 +65,8 @@ cd ./loader/2.2 && ./install.sh && /etc/init.d/nginx reload
 选择 1 然后回车即可 
 ```
 
-4、**【注意】** 立即修改 mysql 的 root 用户密码
+5、**【注意】** 立即修改 mysql 的 root 用户密码
 
 访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`root123aA`）。
 
-5、LNMP添加、删除虚拟主机及伪静态[使用教程](https://lnmp.org/faq/lnmp-vhost-add-howto.html)
+6、LNMP添加、删除虚拟主机及伪静态[使用教程](https://lnmp.org/faq/lnmp-vhost-add-howto.html)
