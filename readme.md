@@ -16,9 +16,11 @@
 
 安装前确认已经安装基本工具（wget、git、screen）
 
-- 使用 `yum install -y git` 命令安装 git。 
-- 使用 `yum install -y screen` 命令安装 screen。 
-- 使用 `yum install -y wget` 命令安装 wget。 
+- 使用  命令安装 git、screen、wget 命令。 
+
+```
+yum install -y git screen wget
+```
 
 1、安装准备
 
@@ -33,13 +35,13 @@ screen -S lnmp
 2、执行LNMP安装命令
 
 ```
-cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/ && LNMP_Auto="y" DBSelect="3" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
+cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/ && LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="8" SelectMalloc="1" ./install.sh lnmp
 ```
 
-```
 提示如下 说明安装完毕 
 
-Install lnmp V1.6 completed! enjoy it.
+```
+Install lnmp completed! enjoy it.
 ```
 
 3、安装 swoole loader 扩展
@@ -47,7 +49,7 @@ Install lnmp V1.6 completed! enjoy it.
 - 执行安装脚本，确保当前位置是在 /usr/local/src/lnmp/ 下，然后执行如下命令 可以用 `pwd` 查看 当前所在目录
 
 ```
-cd ./loader && ./install.sh && /etc/init.d/nginx reload
+cd ./loader/2.2 && ./install.sh && /etc/init.d/nginx reload
 
 会出现提示  Please select the php path to install loader extension:
 
@@ -57,7 +59,7 @@ cd ./loader && ./install.sh && /etc/init.d/nginx reload
 选择 1 然后回车即可 
 ```
 
-4、修改 mysql 的 root 用户密码
+4、**【注意】** 立即修改 mysql 的 root 用户密码
 
 访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`root123aA`）。
 
