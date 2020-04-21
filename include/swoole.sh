@@ -10,7 +10,6 @@ Install_swoole()
     zend_ext="${zend_ext_dir}swoole.so"
     if [ -s "${zend_ext}" ]; then
         rm -f "${zend_ext}"
-        rm -f "${zend_ext_dir}swoole_loader*.so"
     fi
 
     cd ${cur_dir}/src
@@ -22,10 +21,8 @@ Install_swoole()
     Make_Install
     cd ../
 
-    cat >${PHP_Path}/etc/php.ini<<EOF
-extension = "swoole.so"
-swoole.use_shortname = 'Off'
-EOF
+    echo 'extension = "swoole.so"' >> ${PHP_Path}/etc/php.ini
+    echo "swoole.use_shortname = 'Off'" >> ${PHP_Path}/etc/php.ini
 
     Restart_PHP
 
@@ -41,7 +38,8 @@ Uninstall_swoole()
 {
     echo "You will uninstall Swoole..."
     Press_Start
-    # rm -f ${PHP_Path}/etc/php.ini
+    sed -i 's/extension = "swoole.so"//g' ${PHP_Path}/etc/php.ini
+    sed -i 's/swoole.use_shortname = 'Off'//g' ${PHP_Path}/etc/php.ini
     Restart_PHP
     echo "Delete Swoole files..."
     Echo_Green "Uninstall Swoole completed."
