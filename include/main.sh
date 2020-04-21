@@ -1,19 +1,19 @@
 #!/bin/bash
 
 DB_Info=('MySQL 5.1.73' 'MySQL 5.5.62' 'MySQL 5.6.46' 'MySQL 5.7.28' 'MySQL 8.0.18' 'MariaDB 5.5.66' 'MariaDB 10.1.43' 'MariaDB 10.2.30' 'MariaDB 10.3.21' 'MariaDB 10.4.11')
-PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.33' 'PHP 7.2.28' 'PHP 7.3.15' 'PHP 7.4.3')
+PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.33' 'PHP 7.2.29' 'PHP 7.3.16' 'PHP 7.4.4')
 Apache_Info=('Apache 2.2.34' 'Apache 2.4.41')
 
 Database_Selection()
 {
 #which MySQL Version do you want to install?
     if [ -z ${DBSelect} ]; then
-        DBSelect="2"
+        DBSelect="4"
         Echo_Yellow "You have 11 options for your DataBase install."
         echo "1: Install ${DB_Info[0]}"
-        echo "2: Install ${DB_Info[1]} (Default)"
+        echo "2: Install ${DB_Info[1]}"
         echo "3: Install ${DB_Info[2]}"
-        echo "4: Install ${DB_Info[3]}"
+        echo "4: Install ${DB_Info[3]} (Default)"
         echo "5: Install ${DB_Info[4]}"
         echo "6: Install ${DB_Info[5]}"
         echo "7: Install ${DB_Info[6]}"
@@ -123,16 +123,16 @@ PHP_Selection()
     if [ -z ${PHPSelect} ]; then
         echo "==========================="
 
-        PHPSelect="3"
+        PHPSelect="8"
         Echo_Yellow "You have 9 options for your PHP install."
         echo "1: Install ${PHP_Info[0]}"
         echo "2: Install ${PHP_Info[1]}"
         echo "3: Install ${PHP_Info[2]}"
         echo "4: Install ${PHP_Info[3]}"
-        echo "5: Install ${PHP_Info[4]} (Default)"
+        echo "5: Install ${PHP_Info[4]}"
         echo "6: Install ${PHP_Info[5]}"
         echo "7: Install ${PHP_Info[6]}"
-        echo "8: Install ${PHP_Info[7]}"
+        echo "8: Install ${PHP_Info[7]} (Default)"
         echo "9: Install ${PHP_Info[8]}"
         echo "10: Install ${PHP_Info[9]}"
         read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8, 9, 10): " PHPSelect
@@ -276,11 +276,10 @@ Apache_Selection()
 
 Kill_PM()
 {
-    if ps aux | grep "yum" | grep -qv "grep"; then
-        if command -v killall >/dev/null 2>&1; then
-            killall yum
-        else
-            kill `pidof yum`
+    if ps aux | grep -E "yum|dnf" | grep -qv "grep"; then
+        kill -9 $(ps -ef|grep -E "yum|dnf"|grep -v grep|awk '{print $2}')
+        if [ -s /var/run/yum.pid ]; then
+            rm -f /var/run/yum.pid
         fi
     elif ps aux | grep "apt-get" | grep -qv "grep"; then
         if command -v killall >/dev/null 2>&1; then
@@ -466,6 +465,20 @@ Tarj_Cd()
     [[ -d "${DirName}" ]] && rm -rf ${DirName}
     echo "Uncompress ${FileName}..."
     tar jxf ${FileName}
+    if [ -n "${DirName}" ]; then
+        echo "cd ${DirName}..."
+        cd ${DirName}
+    fi
+}
+
+TarJ_Cd()
+{
+    local FileName=$1
+    local DirName=$2
+    cd ${cur_dir}/src
+    [[ -d "${DirName}" ]] && rm -rf ${DirName}
+    echo "Uncompress ${FileName}..."
+    tar Jxf ${FileName}
     if [ -n "${DirName}" ]; then
         echo "cd ${DirName}..."
         cd ${DirName}

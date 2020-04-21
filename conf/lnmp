@@ -175,14 +175,10 @@ server
         listen 80;
         #listen [::]:80;
         server_name ${domain} ${moredomain};
-        index index.html index.htm index.php default.html default.htm default.php;
+        index index.html index.htm index.php;
         root  ${vhostdir};
 
         include rewrite/${rewrite}.conf;
-        #error_page   404   /404.html;
-
-        # Deny access to PHP files in specific directory
-        #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ { deny all; }
 
         ${include_enable_php}
 
@@ -442,7 +438,7 @@ Add_VHost()
     elif [ "${allow_rewrite}" == "y" ]; then
         rewrite="other"
         echo "Please enter the rewrite of programme, "
-        echo "wordpress,discuzx,typecho,thinkphp,laravel,codeigniter,yii2 rewrite was exist."
+        echo "dscmall,wordpress,discuzx,typecho,thinkphp,laravel,codeigniter,yii2 rewrite was exist."
         Echo_Yellow "(Default rewrite: other): "
         read rewrite
         if [ "${rewrite}" == "" ]; then
@@ -940,7 +936,7 @@ Add_SSL_Info_Menu()
     elif [ "${allow_rewrite}" == "y" ]; then
         rewrite="other"
         echo "Please enter the rewrite of programme, "
-        echo "wordpress,discuzx,typecho,thinkphp,laravel,codeigniter,yii2 rewrite was exist."
+        echo "dscmall,wordpress,discuzx,typecho,thinkphp,laravel,codeigniter,yii2 rewrite was exist."
         Echo_Yellow "(Default rewrite: other): "
         read rewrite
         if [ "${rewrite}" == "" ]; then
@@ -1108,7 +1104,7 @@ server
         listen 443 ssl http2;
         #listen [::]:443 ssl http2;
         server_name ${domain} ${moredomain};
-        index index.html index.htm index.php default.html default.htm default.php;
+        index index.html index.htm index.php;
         root  ${vhostdir};
 
         ssl_certificate ${ssl_certificate};
@@ -1122,10 +1118,6 @@ server
         ssl_dhparam /usr/local/nginx/conf/ssl/dhparam.pem;
 
         include rewrite/${rewrite}.conf;
-        #error_page   404   /404.html;
-
-        # Deny access to PHP files in specific directory
-        #location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ { deny all; }
 
         ${include_enable_php}
 
