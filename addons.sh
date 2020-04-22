@@ -39,7 +39,7 @@ Display_Addons_Menu()
     echo "7: imageMagick"
     echo "##### encryption/decryption utility for PHP #####"
     echo "8: ionCube Loader"
-    echo "9: swoole & swoole loader"
+    echo "9: Swoole"
     echo "exit: Exit current script"
     echo "#####################################################"
     read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8, 9 or exit): " action2
