@@ -56,11 +56,20 @@ Deb_RemoveAMP()
     for removepackages in apache2 apache2-doc apache2-utils apache2.2-common apache2.2-bin apache2-mpm-prefork apache2-doc apache2-mpm-worker php5 php5-common php5-cgi php5-cli php5-mysql php5-curl php5-gd;
     do apt-get purge -y $removepackages; done
     if [[ "${DBSelect}" != "0" ]]; then
-        for removepackages in mysql-client mysql-server mysql-common mysql-server-core-5.5 mysql-client-5.5 mariadb-client mariadb-server mariadb-common;
-        do apt-get purge -y $removepackages; done
-        dpkg -l |grep mysql
-        dpkg -P mysql-server mysql-common libmysqlclient15off libmysqlclient15-dev
-        dpkg -P mariadb-client mariadb-server mariadb-common
+        if echo "${Ubuntu_Version}" | grep -Eqi "^20\.04"; then
+            dpkg -l |grep mysql
+            dpkg --force-all -P mysql-server
+            dpkg --force-all -P mariadb-client mariadb-server mariadb-common libmariadbd-dev
+            [[ -d "/etc/mysql" ]] && rm -rf /etc/mysql
+            for removepackages in mysql-server mariadb-server;
+            do apt-get purge -y $removepackages; done
+        else
+            dpkg -l |grep mysql
+            dpkg --force-all -P mysql-server mysql-common libmysqlclient15off libmysqlclient15-dev libmysqlclient18 libmysqlclient18-dev libmysqlclient20 libmysqlclient-dev libmysqlclient21
+            dpkg --force-all -P mariadb-client mariadb-server mariadb-common libmariadbd-dev
+            for removepackages in mysql-client mysql-server mysql-common mysql-server-core-5.5 mysql-client-5.5 mariadb-client mariadb-server mariadb-common;
+            do apt-get purge -y $removepackages; done
+        fi
     fi
     killall apache2
     dpkg -l |grep apache
@@ -397,7 +406,7 @@ Install_Mhash()
 
 Install_Freetype()
 {
-    if echo "${Ubuntu_Version}" | grep -Eqi "^1[89]\." || echo "${Mint_Version}" | grep -Eqi "^19\." || echo "${Deepin_Version}" | grep -Eqi "^15\.[7-9]|1[6-9]|20" || echo "${Debian_Version}" | grep -Eqi "^9|10" || echo "${Raspbian_Version}" | grep -Eqi "^9|10" || echo "${CentOS_Version}" | grep -Eqi "^8"  || echo "${RHEL_Version}" | grep -Eqi "^8" || echo "${Fedora_Version}" | grep -Eqi "^3[0-9]|29"; then
+    if echo "${Ubuntu_Version}" | grep -Eqi "^1[89]\.|20\." || echo "${Mint_Version}" | grep -Eqi "^19\." || echo "${Deepin_Version}" | grep -Eqi "^15\.[7-9]|1[6-9]|20" || echo "${Debian_Version}" | grep -Eqi "^9|10" || echo "${Raspbian_Version}" | grep -Eqi "^9|10" || echo "${CentOS_Version}" | grep -Eqi "^8"  || echo "${RHEL_Version}" | grep -Eqi "^8" || echo "${Fedora_Version}" | grep -Eqi "^3[0-9]|29"; then
         Download_Files ${Download_Mirror}/lib/freetype/${Freetype_New_Ver}.tar.xz ${Freetype_New_Ver}.tar.xz
         Echo_Blue "[+] Installing ${Freetype_New_Ver}"
         TarJ_Cd ${Freetype_New_Ver}.tar.xz ${Freetype_New_Ver}
@@ -725,7 +734,7 @@ Add_Swap()
         fi
     fi
     if command -v python >/dev/null 2>&1; then
-        Disk_Avail=$(${cur_dir}/include/disk.py)
+        Disk_Avail=$(python ${cur_dir}/include/disk.py)
     elif command -v python3 >/dev/null 2>&1; then
         Disk_Avail=$(python3 ${cur_dir}/include/disk.py)
     elif command -v python2 >/dev/null 2>&1; then
