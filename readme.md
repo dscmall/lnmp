@@ -45,13 +45,13 @@ cd /usr/local/src && git clone https://gitee.com/dscmall/lnmp.git && cd lnmp && 
 php 7.1
 
 ```
-LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
+LNMP_Auto="y" DBSelect="4" DB_Root_Password="123456zZ" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
 ```
 
 php 7.2
 
 ```
-LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="8" SelectMalloc="1" ./install.sh lnmp
+LNMP_Auto="y" DBSelect="4" DB_Root_Password="123456zZ" InstallInnodb="y" PHPSelect="8" SelectMalloc="1" ./install.sh lnmp
 ```
 
 提示如下 说明安装完毕 
@@ -94,8 +94,8 @@ Please select the php path to install loader extension:
 
 选择 1 然后回车即可 
 
-5、**【注意】** 立即修改 mysql 的 root 用户密码
+5、**【注意】** 请立即修改 mysql 的 root 用户密码
 
-访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`root123aA`）。
+访问：[http://ip/pma](http://ip/pma)，使用 root 用户登录后，请立即修改初始密码（`123456zZ`）。
 
 6、LNMP添加、删除虚拟主机及伪静态[使用教程](https://lnmp.org/faq/lnmp-vhost-add-howto.html)
