@@ -37,7 +37,7 @@ screen -S lnmp
 - 下载安装脚本
 
 ```
-cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/
+cd /usr/local/src && git clone https://gitee.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/
 ```
 
 - 执行安装脚本（注意 *PHPSelect* 参数的差异）
@@ -60,7 +60,7 @@ LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSel
 Install lnmp completed! enjoy it.
 ```
 
-3、安装 swoole 扩展
+3、安装 swoole 扩展（可选）
 
 ```
 ./addons.sh swoole
