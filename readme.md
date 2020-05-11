@@ -34,8 +34,24 @@ screen -S lnmp
 
 2、执行LNMP安装命令
 
+- 下载安装脚本
+
 ```
-cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/ && LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="8" SelectMalloc="1" ./install.sh lnmp
+cd /usr/local/src && git clone https://github.com/dscmall/lnmp.git && cd lnmp && chmod -R +x ../lnmp/
+```
+
+- 执行安装脚本（注意 *PHPSelect* 参数的差异）
+
+php 7.1
+
+```
+LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="7" SelectMalloc="1" ./install.sh lnmp
+```
+
+php 7.2
+
+```
+LNMP_Auto="y" DBSelect="4" DB_Root_Password="root123aA" InstallInnodb="y" PHPSelect="8" SelectMalloc="1" ./install.sh lnmp
 ```
 
 提示如下 说明安装完毕 
@@ -52,18 +68,31 @@ Install lnmp completed! enjoy it.
 
 4、安装 swoole loader 扩展
 
-- 执行安装脚本，确保当前位置是在 /usr/local/src/lnmp/ 下，然后执行如下命令 可以用 `pwd` 查看 当前所在目录
+执行安装脚本，确保当前位置是在 /usr/local/src/lnmp/ 下，然后执行如下命令 可以用 `pwd` 查看 当前所在目录
 
 ```
-cd ./loader/2.2 && ./install.sh && /etc/init.d/nginx reload
+# php 7.1 扩展目录
+cd ./loader/1.9 
+# php 7.2 扩展目录
+cd ./loader/2.2 
+```
 
-会出现提示  Please select the php path to install loader extension:
+- 执行安装
+
+```
+./install.sh && /etc/init.d/nginx reload
+```
+
+会出现提示
+
+```
+Please select the php path to install loader extension:
 
 1 : /usr/bin/php
 2 : /usr/bin/php-fpm
+```
 
 选择 1 然后回车即可 
-```
 
 5、**【注意】** 立即修改 mysql 的 root 用户密码
 
