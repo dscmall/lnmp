@@ -12,6 +12,10 @@ Install_swoole()
         rm -f "${zend_ext}"
     fi
 
+    echo "Modify php.ini......"
+    sed -i '/extension = "swoole.so"/d' ${PHP_Path}/etc/php.ini
+    sed -i '/swoole.use_shortname = "Off"/d' ${PHP_Path}/etc/php.ini
+
     cd ${cur_dir}/src
     Download_Files https://github.com/swoole/swoole-src/archive/v${Swoole_Stable_Ver}.tar.gz v${Swoole_Stable_Ver}.tar.gz
     Tar_Cd v${Swoole_Stable_Ver}.tar.gz swoole-src-${Swoole_Stable_Ver}
