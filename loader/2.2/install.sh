@@ -149,7 +149,7 @@ echo " "
 php_path=""
 if [ $# -eq 0 ]; then
 	# Check the bin path of php-cli or php-fpm 
-	default_optional_php_paths="php php-fpm php5-fpm php-fpm7.2"
+	default_optional_php_paths="php /usr/local/php7.2/bin/php"
 	enabled_php_paths=""
 	for optional_php_path in $default_optional_php_paths
 	do
